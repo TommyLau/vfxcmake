@@ -72,12 +72,12 @@ macro(MAYA_SET_PLUGIN_PROPERTIES target)
         set(MAYA_COMPILE_DEFINITIONS AW_NEW_IOSTREAMS REQUIRE_IOSTREAM _BOOL _DARWIN MAC_PLUGIN
             OSMac_ OSMac_MachO OSMacOSX_ CC_GNU_ _LANGUAGE_C_PLUS_PLUS)
         set(MAYA_COMPILE_FLAGS
-          "-fno-gnu-keywords -include ${MAYA_INCLUDE_PATH}/maya/OpenMayaMac.h" )
+          "-fno-gnu-keywords -include ${MAYA_INCLUDE_DIRS}/maya/OpenMayaMac.h" )
 
         set(MAYA_LINK_FLAGS
           #"-dynamic -g -fPIC "
           #"-shared -g -fPIC "
-          "-fno-gnu-keywords -framework System  -framework SystemConfiguration -framework CoreServices -framework Carbon -framework Cocoa -framework ApplicationServices -framework Quicktime -framework IOKit -bundle -fPIC -L${ALEMBIC_MAYA_LIB_ROOT} -Wl,-executable_path,${ALEMBIC_MAYA_LIB_ROOT}" )
+          "-fno-gnu-keywords -framework System  -framework SystemConfiguration -framework CoreServices -framework Carbon -framework Cocoa -framework ApplicationServices -framework IOKit -L${MAYA_LIBRARY_DIRS} -Wl,-executable_path,${MAYA_LIBRARY_DIRS}" )
 
         if(QT_LIBRARIES)
             set(_changes "")
